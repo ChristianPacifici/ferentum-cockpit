@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+
+node_modules/
+npm-debug.log*
+
+# Stato runtime locale (flag TODO/star, impostazioni con API key) - mai committato
+app/data/flags.json
+app/data/settings.json
+
+.DS_Store
+Thumbs.db

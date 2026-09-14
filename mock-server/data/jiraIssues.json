@@ -1,0 +1,216 @@
+{
+  "expand": "schema,names",
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 5,
+  "issues": [
+    {
+      "id": "10101",
+      "key": "FER-101",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10101",
+      "fields": {
+        "summary": "Investigare timeout intermittenti su servizio pagamenti",
+        "issuetype": { "name": "Bug", "iconUrl": "" },
+        "status": { "name": "To Do", "statusCategory": { "key": "new", "name": "To Do" } },
+        "priority": { "name": "High" },
+        "assignee": { "displayName": "Christian Pacifici", "emailAddress": "christian@pacifici.tech" },
+        "reporter": { "displayName": "Elena Rossi" },
+        "updated": "2026-09-12T09:15:00.000+0200",
+        "created": "2026-09-08T11:00:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": {
+        "histories": [
+          {
+            "author": { "displayName": "Elena Rossi" },
+            "created": "2026-09-12T09:15:00.000+0200",
+            "items": [{ "field": "priority", "fromString": "Medium", "toString": "High" }]
+          },
+          {
+            "author": { "displayName": "Marco Bianchi" },
+            "created": "2026-09-11T15:30:00.000+0200",
+            "items": [{ "field": "status", "fromString": "In Progress", "toString": "To Do" }]
+          }
+        ]
+      }
+    },
+    {
+      "id": "10102",
+      "key": "FER-114",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10102",
+      "fields": {
+        "summary": "Aggiungere validazione IBAN sul modulo di onboarding",
+        "issuetype": { "name": "Story", "iconUrl": "" },
+        "status": { "name": "In Progress", "statusCategory": { "key": "indeterminate", "name": "In Progress" } },
+        "priority": { "name": "Medium" },
+        "assignee": { "displayName": "Christian Pacifici", "emailAddress": "christian@pacifici.tech" },
+        "reporter": { "displayName": "Marco Bianchi" },
+        "updated": "2026-09-13T16:40:00.000+0200",
+        "created": "2026-09-01T10:30:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": {
+        "histories": [
+          {
+            "author": { "displayName": "Marco Bianchi" },
+            "created": "2026-09-13T16:40:00.000+0200",
+            "items": [{ "field": "Comment", "fromString": null, "toString": "Attenzione: serve anche il controllo del BIC per i bonifici SEPA extra-UE." }]
+          },
+          {
+            "author": { "displayName": "Christian Pacifici" },
+            "created": "2026-09-12T11:05:00.000+0200",
+            "items": [{ "field": "status", "fromString": "To Do", "toString": "In Progress" }]
+          }
+        ]
+      }
+    },
+    {
+      "id": "10103",
+      "key": "FER-120",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10103",
+      "fields": {
+        "summary": "Migrare pipeline CI da Jenkins a GitHub Actions",
+        "issuetype": { "name": "Task", "iconUrl": "" },
+        "status": { "name": "To Do", "statusCategory": { "key": "new", "name": "To Do" } },
+        "priority": { "name": "Low" },
+        "assignee": { "displayName": "Christian Pacifici", "emailAddress": "christian@pacifici.tech" },
+        "reporter": { "displayName": "Christian Pacifici" },
+        "updated": "2026-09-09T08:00:00.000+0200",
+        "created": "2026-09-05T14:00:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": {
+        "histories": [
+          {
+            "author": { "displayName": "Elena Rossi" },
+            "created": "2026-09-09T08:00:00.000+0200",
+            "items": [{ "field": "assignee", "fromString": "Elena Rossi", "toString": "Christian Pacifici" }]
+          }
+        ]
+      }
+    },
+    {
+      "id": "10104",
+      "key": "FER-125",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10104",
+      "fields": {
+        "summary": "Code review architetturale per servizio open banking consents",
+        "issuetype": { "name": "Task", "iconUrl": "" },
+        "status": { "name": "To Do", "statusCategory": { "key": "new", "name": "To Do" } },
+        "priority": { "name": "High" },
+        "assignee": { "displayName": "Christian Pacifici", "emailAddress": "christian@pacifici.tech" },
+        "reporter": { "displayName": "Elena Rossi" },
+        "updated": "2026-09-14T07:20:00.000+0200",
+        "created": "2026-09-12T09:00:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": {
+        "histories": [
+          {
+            "author": { "displayName": "Elena Rossi" },
+            "created": "2026-09-14T07:20:00.000+0200",
+            "items": [{ "field": "Comment", "fromString": null, "toString": "Ho aggiunto i diagrammi della sequenza nel documento collegato, pronto per il tuo review." }]
+          },
+          {
+            "author": { "displayName": "Elena Rossi" },
+            "created": "2026-09-12T09:00:00.000+0200",
+            "items": [{ "field": "issue", "fromString": null, "toString": "created" }]
+          }
+        ]
+      }
+    },
+    {
+      "id": "10106",
+      "key": "FER-130",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10106",
+      "fields": {
+        "summary": "Aggiornare le policy di retry sul connettore SEPA",
+        "issuetype": { "name": "Task", "iconUrl": "" },
+        "status": { "name": "To Do", "statusCategory": { "key": "new", "name": "To Do" } },
+        "priority": { "name": "High" },
+        "assignee": { "displayName": "Elena Rossi", "emailAddress": "elena.rossi@ferentum.example" },
+        "reporter": { "displayName": "Christian Pacifici" },
+        "updated": "2026-09-13T10:00:00.000+0200",
+        "created": "2026-09-10T09:00:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": { "histories": [] }
+    },
+    {
+      "id": "10107",
+      "key": "FER-133",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10107",
+      "fields": {
+        "summary": "Ottimizzare query di riconciliazione notturna",
+        "issuetype": { "name": "Bug", "iconUrl": "" },
+        "status": { "name": "In Progress", "statusCategory": { "key": "indeterminate", "name": "In Progress" } },
+        "priority": { "name": "Medium" },
+        "assignee": { "displayName": "Marco Bianchi", "emailAddress": "marco.bianchi@ferentum.example" },
+        "reporter": { "displayName": "Elena Rossi" },
+        "updated": "2026-09-14T08:30:00.000+0200",
+        "created": "2026-09-06T09:00:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": { "histories": [] }
+    },
+    {
+      "id": "10201",
+      "key": "PLAT-12",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10201",
+      "fields": {
+        "summary": "Valutare migrazione del cluster Kafka a versione 3.7",
+        "issuetype": { "name": "Task", "iconUrl": "" },
+        "status": { "name": "To Do", "statusCategory": { "key": "new", "name": "To Do" } },
+        "priority": { "name": "Medium" },
+        "assignee": { "displayName": "Marco Bianchi", "emailAddress": "marco.bianchi@ferentum.example" },
+        "reporter": { "displayName": "Christian Pacifici" },
+        "updated": "2026-09-12T14:00:00.000+0200",
+        "created": "2026-09-02T09:00:00.000+0200",
+        "project": { "key": "PLAT", "name": "Platform Infrastructure" }
+      },
+      "changelog": { "histories": [] }
+    },
+    {
+      "id": "10202",
+      "key": "PLAT-15",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10202",
+      "fields": {
+        "summary": "Definire dashboard di osservabilità per i nuovi microservizi",
+        "issuetype": { "name": "Story", "iconUrl": "" },
+        "status": { "name": "To Do", "statusCategory": { "key": "new", "name": "To Do" } },
+        "priority": { "name": "Low" },
+        "assignee": { "displayName": "Elena Rossi", "emailAddress": "elena.rossi@ferentum.example" },
+        "reporter": { "displayName": "Christian Pacifici" },
+        "updated": "2026-09-11T11:00:00.000+0200",
+        "created": "2026-09-03T09:00:00.000+0200",
+        "project": { "key": "PLAT", "name": "Platform Infrastructure" }
+      },
+      "changelog": { "histories": [] }
+    },
+    {
+      "id": "10105",
+      "key": "FER-098",
+      "self": "https://mock.atlassian.net/rest/api/2/issue/10105",
+      "fields": {
+        "summary": "Rilasciare changelog v2.3 (completato, per test filtro Done)",
+        "issuetype": { "name": "Task", "iconUrl": "" },
+        "status": { "name": "Done", "statusCategory": { "key": "done", "name": "Done" } },
+        "priority": { "name": "Medium" },
+        "assignee": { "displayName": "Christian Pacifici", "emailAddress": "christian@pacifici.tech" },
+        "reporter": { "displayName": "Marco Bianchi" },
+        "updated": "2026-09-07T12:00:00.000+0200",
+        "created": "2026-08-20T09:00:00.000+0200",
+        "project": { "key": "FER", "name": "Ferentum Platform" }
+      },
+      "changelog": {
+        "histories": [
+          {
+            "author": { "displayName": "Marco Bianchi" },
+            "created": "2026-09-07T12:00:00.000+0200",
+            "items": [{ "field": "status", "fromString": "In Progress", "toString": "Done" }]
+          }
+        ]
+      }
+    }
+  ]
+}

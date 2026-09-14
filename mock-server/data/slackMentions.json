@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "messages": {
+    "total": 3,
+    "matches": [
+      {
+        "text": "<@christian.pacifici> puoi dare un'occhiata al deploy di stanotte? Il job di reconciliation ha loggato dei warning.",
+        "user": "elena.rossi",
+        "username": "elena.rossi",
+        "ts": "1789369500.000100",
+        "permalink": "https://ferentum.slack.com/archives/C0PAYMENTS/p1757830800000100",
+        "channel": { "name": "team-payments" }
+      },
+      {
+        "text": "review veloce su FER-125 quando hai un attimo <@christian.pacifici>, grazie!",
+        "user": "elena.rossi",
+        "username": "elena.rossi",
+        "ts": "1789316400.000200",
+        "permalink": "https://ferentum.slack.com/archives/C0PAYMENTS/p1757823600000200",
+        "channel": { "name": "team-payments" }
+      },
+      {
+        "text": "<@christian.pacifici> ok per il rollout su PLAT-12 la prossima settimana?",
+        "user": "marco.bianchi",
+        "username": "marco.bianchi",
+        "ts": "1789204200.000300",
+        "permalink": "https://ferentum.slack.com/archives/C0PLATFORM/p1757761200000300",
+        "channel": { "name": "team-platform" }
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+services:
+  mock-server:
+    build: ./mock-server
+    container_name: ferentum-cockpit-mock-server
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+
+  app:
+    build: ./app
+    container_name: ferentum-cockpit-app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      # In Docker il mock-server è raggiungibile tramite il nome del servizio, non localhost
+      - MOCK_SERVER_URL=http://mock-server:4000
+    volumes:
+      # Persiste i flag TODO/star sull'host tra un riavvio del container e l'altro
+      - ./app/data:/usr/src/app/data
+    depends_on:
+      - mock-server
+    restart: unless-stopped

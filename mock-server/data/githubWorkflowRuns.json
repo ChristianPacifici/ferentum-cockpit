@@ -1,0 +1,52 @@
+{
+  "ferentum/ferentum-blockchain": [
+    {
+      "id": 900001,
+      "name": "CI",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/ferentum/ferentum-blockchain/actions/runs/900001",
+      "run_started_at": "2026-09-14T06:10:00Z",
+      "updated_at": "2026-09-14T06:22:00Z",
+      "actor": { "login": "christianpacifici" }
+    },
+    {
+      "id": 900000,
+      "name": "CI",
+      "head_branch": "fix/gas-estimation",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ferentum/ferentum-blockchain/actions/runs/900000",
+      "run_started_at": "2026-09-13T18:40:00Z",
+      "updated_at": "2026-09-13T18:52:00Z",
+      "actor": { "login": "christianpacifici" }
+    }
+  ],
+  "ferentum/openbanking-account-access-consents-svc": [
+    {
+      "id": 900101,
+      "name": "Build & Test",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/ferentum/openbanking-account-access-consents-svc/actions/runs/900101",
+      "run_started_at": "2026-09-14T07:40:00Z",
+      "updated_at": "2026-09-14T07:58:00Z",
+      "actor": { "login": "elenarossi" }
+    }
+  ],
+  "ferentum/ludicus-video-organizer": [
+    {
+      "id": 900201,
+      "name": "CI",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ferentum/ludicus-video-organizer/actions/runs/900201",
+      "run_started_at": "2026-09-13T09:00:00Z",
+      "updated_at": "2026-09-13T09:12:00Z",
+      "actor": { "login": "christianpacifici" }
+    }
+  ]
+}

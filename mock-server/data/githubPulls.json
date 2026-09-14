@@ -1,0 +1,93 @@
+{
+  "ferentum/ferentum-blockchain": [
+    {
+      "id": 500001,
+      "number": 42,
+      "title": "Fix gas estimation on batch transfer contract",
+      "state": "open",
+      "draft": false,
+      "html_url": "https://github.com/ferentum/ferentum-blockchain/pull/42",
+      "user": { "login": "christianpacifici" },
+      "created_at": "2026-09-10T08:12:00Z",
+      "updated_at": "2026-09-13T18:45:00Z",
+      "requested_reviewers": [{ "login": "elenarossi" }],
+      "base": { "ref": "main", "repo": { "full_name": "ferentum/ferentum-blockchain" } },
+      "head": { "ref": "fix/gas-estimation" }
+    },
+    {
+      "id": 500002,
+      "number": 39,
+      "title": "Add integration tests for wallet signing flow",
+      "state": "open",
+      "draft": true,
+      "html_url": "https://github.com/ferentum/ferentum-blockchain/pull/39",
+      "user": { "login": "christianpacifici" },
+      "created_at": "2026-09-05T10:00:00Z",
+      "updated_at": "2026-09-11T09:30:00Z",
+      "requested_reviewers": [],
+      "base": { "ref": "main", "repo": { "full_name": "ferentum/ferentum-blockchain" } },
+      "head": { "ref": "test/wallet-signing" }
+    },
+    {
+      "id": 500003,
+      "number": 35,
+      "title": "Bump solidity compiler to 0.8.26",
+      "state": "closed",
+      "draft": false,
+      "html_url": "https://github.com/ferentum/ferentum-blockchain/pull/35",
+      "user": { "login": "christianpacifici" },
+      "created_at": "2026-08-20T10:00:00Z",
+      "updated_at": "2026-08-22T09:30:00Z",
+      "merged_at": "2026-08-22T09:30:00Z",
+      "requested_reviewers": [],
+      "base": { "ref": "main", "repo": { "full_name": "ferentum/ferentum-blockchain" } },
+      "head": { "ref": "chore/bump-solidity" }
+    }
+  ],
+  "ferentum/openbanking-account-access-consents-svc": [
+    {
+      "id": 500101,
+      "number": 18,
+      "title": "Implement PSD2 consent revocation endpoint",
+      "state": "open",
+      "draft": false,
+      "html_url": "https://github.com/ferentum/openbanking-account-access-consents-svc/pull/18",
+      "user": { "login": "christianpacifici" },
+      "created_at": "2026-09-12T14:20:00Z",
+      "updated_at": "2026-09-14T07:05:00Z",
+      "requested_reviewers": [{ "login": "marcobianchi" }],
+      "base": { "ref": "main", "repo": { "full_name": "ferentum/openbanking-account-access-consents-svc" } },
+      "head": { "ref": "feature/consent-revocation" }
+    },
+    {
+      "id": 500102,
+      "number": 15,
+      "title": "Refactor consent status state machine",
+      "state": "open",
+      "draft": false,
+      "html_url": "https://github.com/ferentum/openbanking-account-access-consents-svc/pull/15",
+      "user": { "login": "elenarossi" },
+      "created_at": "2026-09-09T09:00:00Z",
+      "updated_at": "2026-09-13T12:00:00Z",
+      "requested_reviewers": [{ "login": "christianpacifici" }],
+      "base": { "ref": "main", "repo": { "full_name": "ferentum/openbanking-account-access-consents-svc" } },
+      "head": { "ref": "refactor/consent-state-machine" }
+    }
+  ],
+  "ferentum/ludicus-video-organizer": [
+    {
+      "id": 500201,
+      "number": 7,
+      "title": "Add thumbnail caching layer",
+      "state": "open",
+      "draft": false,
+      "html_url": "https://github.com/ferentum/ludicus-video-organizer/pull/7",
+      "user": { "login": "christianpacifici" },
+      "created_at": "2026-09-13T11:00:00Z",
+      "updated_at": "2026-09-14T06:50:00Z",
+      "requested_reviewers": [],
+      "base": { "ref": "main", "repo": { "full_name": "ferentum/ludicus-video-organizer" } },
+      "head": { "ref": "feature/thumbnail-cache" }
+    }
+  ]
+}

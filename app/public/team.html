@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team · Ferentum Cockpit</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-mark" src="logo.svg" alt="Ferentum Cockpit" />
+      <div>
+        <h1>Carico di lavoro del team</h1>
+        <p class="subtitle">Ticket Jira aperti + PR GitHub aperte, per persona</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button id="refresh-btn" class="btn">Aggiorna</button>
+      <a href="/" class="btn">&larr; Torna al feed</a>
+    </div>
+  </header>
+
+  <main class="workload">
+    <div id="workload-body">
+      <p class="loading">Caricamento...</p>
+    </div>
+  </main>
+
+  <script src="team.js"></script>
+</body>
+</html>

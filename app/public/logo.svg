@@ -1,0 +1,17 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- background -->
+  <rect x="0" y="0" width="200" height="200" rx="40" fill="#1c1230"/>
+
+  <!-- handles: minimal stroke arcs -->
+  <path d="M60,72 C34,78 24,96 28,114 C31,126 42,132 54,130"
+        fill="none" stroke="#c97a44" stroke-width="7" stroke-linecap="round"/>
+  <path d="M140,72 C166,78 176,96 172,114 C169,126 158,132 146,130"
+        fill="none" stroke="#c97a44" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- vessel body: single flat shape, straight edges -->
+  <path d="M64,56 L136,56 L120,94 L134,150 C134,164 118,172 100,172 C82,172 66,164 66,150 L80,94 Z"
+        fill="#c97a44"/>
+
+  <!-- rim: flat ellipse -->
+  <ellipse cx="100" cy="56" rx="36" ry="10" fill="#8b4a24"/>
+</svg>
