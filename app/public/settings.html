@@ -1,165 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impostazioni · Ferentum Cockpit</title>
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <img class="brand-mark" src="logo.svg" alt="Ferentum Cockpit" />
-      <div>
-        <h1>Impostazioni</h1>
-        <p class="subtitle">API key e URL per Jira, GitHub, CI, PagerDuty &amp; Slack</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impostazioni · Ferentum Cockpit</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img class="brand-mark" src="logo.svg" alt="Ferentum Cockpit" />
+        <div>
+          <h1>Impostazioni</h1>
+          <p class="subtitle">API key e URL per Jira, GitHub, CI, PagerDuty &amp; Slack</p>
+        </div>
       </div>
-    </div>
-    <div class="topbar-right">
-      <a href="/team.html" class="btn">&#128101; Team</a>
-      <a href="/" class="btn">&larr; Torna al feed</a>
-    </div>
-  </header>
-
-  <main class="settings">
-    <p class="settings-warning">
-      Questi valori vengono salvati in <code>app/data/settings.json</code> sul tuo disco locale
-      (o nel volume Docker montato) e non vengono mai inviati altrove né committati in git.
-    </p>
-
-    <form id="settings-form">
-      <section class="settings-section">
-        <h2>Modalità</h2>
-        <label class="field checkbox">
-          <input type="checkbox" id="useMocks" />
-          <span>Usa il mock server (disattiva per chiamare le API reali)</span>
-        </label>
-        <label class="field">
-          <span>URL mock server</span>
-          <input type="text" id="mockServerUrl" placeholder="http://localhost:4000" />
-        </label>
-      </section>
-
-      <section class="settings-section">
-        <h2>Jira</h2>
-        <label class="field">
-          <span>Base URL istanza Atlassian</span>
-          <input type="text" id="jiraBaseUrl" placeholder="https://tuaazienda.atlassian.net" />
-        </label>
-        <label class="field">
-          <span>Email account Jira</span>
-          <input type="email" id="jiraEmail" placeholder="tuo@indirizzo.email" />
-        </label>
-        <label class="field">
-          <span>API Token Jira</span>
-          <input type="password" id="jiraApiToken" placeholder="Lascia vuoto per non modificare" autocomplete="new-password" />
-          <small id="jiraApiToken-hint" class="field-hint"></small>
-        </label>
-        <label class="field">
-          <span>JQL — "Le mie attività"</span>
-          <input type="text" id="jiraJql" />
-        </label>
-        <label class="field">
-          <span>JQL — "Attività del team"</span>
-          <input type="text" id="jiraTeamJql" />
-        </label>
-        <label class="field">
-          <span>Numero massimo eventi attività team</span>
-          <input type="number" id="jiraActivityLimit" min="1" max="100" />
-        </label>
-        <label class="field">
-          <span>JQL — Carico di lavoro (usa "project in (...)" per più progetti insieme)</span>
-          <input type="text" id="jiraWorkloadJql" />
-        </label>
-      </section>
-
-      <section class="settings-section">
-        <h2>GitHub</h2>
-        <label class="field">
-          <span>API URL</span>
-          <input type="text" id="githubApiUrl" placeholder="https://api.github.com" />
-        </label>
-        <label class="field">
-          <span>Personal Access Token</span>
-          <input type="password" id="githubToken" placeholder="Lascia vuoto per non modificare" autocomplete="new-password" />
-          <small id="githubToken-hint" class="field-hint"></small>
-        </label>
-        <label class="field">
-          <span>Username GitHub</span>
-          <input type="text" id="githubUsername" placeholder="tuo-username-github" />
-        </label>
-        <label class="field">
-          <span>Repository da monitorare (owner/repo, separati da virgola)</span>
-          <input type="text" id="githubRepos" placeholder="owner/repo-1,owner/repo-2" />
-        </label>
-        <label class="field checkbox">
-          <input type="checkbox" id="githubOnlyMine" />
-          <span>Mostra solo le PR create da me</span>
-        </label>
-      </section>
-
-      <section class="settings-section">
-        <h2>Team &amp; carico di lavoro</h2>
-        <label class="field">
-          <span>Mappa login GitHub &rarr; nome Jira (per unire i conteggi per persona)</span>
-          <input type="text" id="teamDirectory" placeholder="login1=Nome Cognome,login2=Nome Cognome" />
-        </label>
-      </section>
-
-      <section class="settings-section">
-        <h2>CI (GitHub Actions)</h2>
-        <label class="field checkbox">
-          <input type="checkbox" id="ciEnabled" />
-          <span>Mostra le build fallite tra i segnali di progetto</span>
-        </label>
-      </section>
-
-      <section class="settings-section">
-        <h2>PagerDuty</h2>
-        <label class="field checkbox">
-          <input type="checkbox" id="pagerdutyEnabled" />
-          <span>Mostra gli incident aperti tra i segnali di progetto</span>
-        </label>
-        <label class="field">
-          <span>Base URL API</span>
-          <input type="text" id="pagerdutyBaseUrl" placeholder="https://api.pagerduty.com" />
-        </label>
-        <label class="field">
-          <span>API Token</span>
-          <input type="password" id="pagerdutyToken" placeholder="Lascia vuoto per non modificare" autocomplete="new-password" />
-          <small id="pagerdutyToken-hint" class="field-hint"></small>
-        </label>
-      </section>
-
-      <section class="settings-section">
-        <h2>Slack</h2>
-        <label class="field checkbox">
-          <input type="checkbox" id="slackEnabled" />
-          <span>Mostra le menzioni tra i segnali di progetto</span>
-        </label>
-        <label class="field">
-          <span>API URL</span>
-          <input type="text" id="slackApiUrl" placeholder="https://slack.com/api" />
-        </label>
-        <label class="field">
-          <span>Bot/User Token</span>
-          <input type="password" id="slackToken" placeholder="Lascia vuoto per non modificare" autocomplete="new-password" />
-          <small id="slackToken-hint" class="field-hint"></small>
-        </label>
-        <label class="field">
-          <span>Query menzioni (es. "@me" o "from:@qualcuno")</span>
-          <input type="text" id="slackMentionQuery" placeholder="@me" />
-        </label>
-      </section>
-
-      <div class="settings-actions">
-        <span id="save-status" class="save-status"></span>
-        <button type="submit" class="btn btn-primary">Salva impostazioni</button>
+      <div class="topbar-right">
+        <a href="/team.html" class="btn">&#128101; Team</a>
+        <a href="/" class="btn">&larr; Torna al feed</a>
       </div>
-    </form>
-  </main>
+    </header>
 
-  <script src="settings.js"></script>
-</body>
+    <main class="settings">
+      <p class="settings-warning">
+        Questi valori vengono salvati in <code>app/data/settings.json</code> sul tuo disco locale (o nel
+        volume Docker montato) e non vengono mai inviati altrove né committati in git.
+      </p>
+
+      <form id="settings-form">
+        <section class="settings-section">
+          <h2>Modalità</h2>
+          <label class="field checkbox">
+            <input type="checkbox" id="useMocks" />
+            <span>Usa il mock server (disattiva per chiamare le API reali)</span>
+          </label>
+          <label class="field">
+            <span>URL mock server</span>
+            <input type="text" id="mockServerUrl" placeholder="http://localhost:4000" />
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <h2>Jira</h2>
+          <label class="field">
+            <span>Base URL istanza Atlassian</span>
+            <input type="text" id="jiraBaseUrl" placeholder="https://tuaazienda.atlassian.net" />
+          </label>
+          <label class="field">
+            <span>Email account Jira</span>
+            <input type="email" id="jiraEmail" placeholder="tuo@indirizzo.email" />
+          </label>
+          <label class="field">
+            <span>API Token Jira</span>
+            <input
+              type="password"
+              id="jiraApiToken"
+              placeholder="Lascia vuoto per non modificare"
+              autocomplete="new-password"
+            />
+            <small id="jiraApiToken-hint" class="field-hint"></small>
+          </label>
+          <label class="field">
+            <span>JQL — "Le mie attività"</span>
+            <input type="text" id="jiraJql" />
+          </label>
+          <label class="field">
+            <span>JQL — "Attività del team"</span>
+            <input type="text" id="jiraTeamJql" />
+          </label>
+          <label class="field">
+            <span>Numero massimo eventi attività team</span>
+            <input type="number" id="jiraActivityLimit" min="1" max="100" />
+          </label>
+          <label class="field">
+            <span>JQL — Carico di lavoro (usa "project in (...)" per più progetti insieme)</span>
+            <input type="text" id="jiraWorkloadJql" />
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <h2>GitHub</h2>
+          <label class="field">
+            <span>API URL</span>
+            <input type="text" id="githubApiUrl" placeholder="https://api.github.com" />
+          </label>
+          <label class="field">
+            <span>Personal Access Token</span>
+            <input
+              type="password"
+              id="githubToken"
+              placeholder="Lascia vuoto per non modificare"
+              autocomplete="new-password"
+            />
+            <small id="githubToken-hint" class="field-hint"></small>
+          </label>
+          <label class="field">
+            <span>Username GitHub</span>
+            <input type="text" id="githubUsername" placeholder="tuo-username-github" />
+          </label>
+          <label class="field">
+            <span>Repository da monitorare (owner/repo, separati da virgola)</span>
+            <input type="text" id="githubRepos" placeholder="owner/repo-1,owner/repo-2" />
+          </label>
+          <label class="field checkbox">
+            <input type="checkbox" id="githubOnlyMine" />
+            <span>Mostra solo le PR create da me</span>
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <h2>Team &amp; carico di lavoro</h2>
+          <label class="field">
+            <span>Mappa login GitHub &rarr; nome Jira (per unire i conteggi per persona)</span>
+            <input type="text" id="teamDirectory" placeholder="login1=Nome Cognome,login2=Nome Cognome" />
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <h2>CI (GitHub Actions)</h2>
+          <label class="field checkbox">
+            <input type="checkbox" id="ciEnabled" />
+            <span>Mostra le build fallite tra i segnali di progetto</span>
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <h2>PagerDuty</h2>
+          <label class="field checkbox">
+            <input type="checkbox" id="pagerdutyEnabled" />
+            <span>Mostra gli incident aperti tra i segnali di progetto</span>
+          </label>
+          <label class="field">
+            <span>Base URL API</span>
+            <input type="text" id="pagerdutyBaseUrl" placeholder="https://api.pagerduty.com" />
+          </label>
+          <label class="field">
+            <span>API Token</span>
+            <input
+              type="password"
+              id="pagerdutyToken"
+              placeholder="Lascia vuoto per non modificare"
+              autocomplete="new-password"
+            />
+            <small id="pagerdutyToken-hint" class="field-hint"></small>
+          </label>
+        </section>
+
+        <section class="settings-section">
+          <h2>Slack</h2>
+          <label class="field checkbox">
+            <input type="checkbox" id="slackEnabled" />
+            <span>Mostra le menzioni tra i segnali di progetto</span>
+          </label>
+          <label class="field">
+            <span>API URL</span>
+            <input type="text" id="slackApiUrl" placeholder="https://slack.com/api" />
+          </label>
+          <label class="field">
+            <span>Bot/User Token</span>
+            <input
+              type="password"
+              id="slackToken"
+              placeholder="Lascia vuoto per non modificare"
+              autocomplete="new-password"
+            />
+            <small id="slackToken-hint" class="field-hint"></small>
+          </label>
+          <label class="field">
+            <span>Query menzioni (es. "@me" o "from:@qualcuno")</span>
+            <input type="text" id="slackMentionQuery" placeholder="@me" />
+          </label>
+        </section>
+
+        <div class="settings-actions">
+          <span id="save-status" class="save-status"></span>
+          <button type="submit" class="btn btn-primary">Salva impostazioni</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="settings.js"></script>
+  </body>
 </html>

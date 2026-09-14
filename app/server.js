@@ -30,6 +30,10 @@ app.use('/api/workload', workloadRoutes);
 
 app.get('/health', (req, res) => res.json({ status: 'ok', service: 'ferentum-cockpit' }));
 
-app.listen(PORT, () => {
-  console.log(`Ferentum Cockpit listening on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Ferentum Cockpit listening on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

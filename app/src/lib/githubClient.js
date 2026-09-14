@@ -29,21 +29,23 @@ async function fetchActivePulls() {
   const results = await Promise.all(
     repos.map(async (fullName) => {
       const pulls = await fetchPullsForRepo(settings, fullName);
-      return pulls
-        // The GitHub REST /pulls endpoint has no "creator" query param, so this filter is applied client-side.
-        .filter((pr) => !settings.githubOnlyMine || pr.user?.login === settings.githubUsername)
-        .map((pr) => ({
-          id: `github-pr-${fullName.replace('/', '-')}-${pr.number}`,
-          repo: fullName,
-          number: pr.number,
-          title: pr.title,
-          author: pr.user?.login,
-          draft: pr.draft,
-          url: pr.html_url,
-          createdAt: pr.created_at,
-          updatedAt: pr.updated_at,
-          reviewers: (pr.requested_reviewers || []).map((r) => r.login)
-        }));
+      return (
+        pulls
+          // The GitHub REST /pulls endpoint has no "creator" query param, so this filter is applied client-side.
+          .filter((pr) => !settings.githubOnlyMine || pr.user?.login === settings.githubUsername)
+          .map((pr) => ({
+            id: `github-pr-${fullName.replace('/', '-')}-${pr.number}`,
+            repo: fullName,
+            number: pr.number,
+            title: pr.title,
+            author: pr.user?.login,
+            draft: pr.draft,
+            url: pr.html_url,
+            createdAt: pr.created_at,
+            updatedAt: pr.updated_at,
+            reviewers: (pr.requested_reviewers || []).map((r) => r.login)
+          }))
+      );
     })
   );
 

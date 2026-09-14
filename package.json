@@ -1,0 +1,31 @@
+{
+  "name": "ferentum-cockpit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ferentum Cockpit - dashboard locale con feed unificato Jira/GitHub, segnali di progetto e carico di lavoro del team, con mock server integrato.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "workspaces": [
+    "app",
+    "mock-server"
+  ],
+  "scripts": {
+    "dev:mock": "npm run start --workspace=mock-server",
+    "dev:app": "npm run start --workspace=app",
+    "lint": "eslint .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.12.0",
+    "prettier": "^3.3.3",
+    "supertest": "^7.0.0",
+    "vitest": "^5.0.0"
+  }
+}

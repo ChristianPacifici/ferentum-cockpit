@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_DIR = path.join(__dirname, '..', '..', 'data');
+// FERENTUM_DATA_DIR lets tests point this at a throwaway temp directory instead of app/data.
+const DATA_DIR = process.env.FERENTUM_DATA_DIR || path.join(__dirname, '..', '..', 'data');
 const FLAGS_FILE = path.join(DATA_DIR, 'flags.json');
 
 function ensureStore() {

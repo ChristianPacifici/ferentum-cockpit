@@ -1,9 +1,12 @@
 {
-  "name": "ferentum-cockpit",
+  "name": "@ferentum-cockpit/app",
   "version": "1.0.0",
   "description": "Ferentum Cockpit - dashboard locale con sezione Jira (to-do assegnati) e GitHub (PR attive), con mock server integrato per lo sviluppo prima dell'integrazione reale.",
   "main": "server.js",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "node server.js"
   },

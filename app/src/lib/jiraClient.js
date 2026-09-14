@@ -6,7 +6,9 @@ function authHeader(settings) {
 }
 
 function issueUrl(settings, key) {
-  return settings.useMocks ? `${settings.mockServerUrl}/jira/browse/${key}` : `${settings.jiraBaseUrl}/browse/${key}`;
+  return settings.useMocks
+    ? `${settings.mockServerUrl}/jira/browse/${key}`
+    : `${settings.jiraBaseUrl}/browse/${key}`;
 }
 
 async function searchIssues(settings, jql, { expand } = {}) {
@@ -43,7 +45,8 @@ async function fetchJiraTodo() {
 function describeChange(author, issueKey, item) {
   const { field, fromString, toString } = item;
   if (field === 'status') return `${author} ha spostato ${issueKey} da "${fromString}" a "${toString}"`;
-  if (field === 'priority') return `${author} ha cambiato la priorità di ${issueKey}: ${fromString} → ${toString}`;
+  if (field === 'priority')
+    return `${author} ha cambiato la priorità di ${issueKey}: ${fromString} → ${toString}`;
   if (field === 'assignee') return `${author} ha assegnato ${issueKey} a ${toString}`;
   if (field === 'Comment') return `${author} ha commentato ${issueKey}: "${toString}"`;
   if (field === 'issue' && toString === 'created') return `${author} ha creato ${issueKey}`;

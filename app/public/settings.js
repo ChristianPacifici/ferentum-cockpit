@@ -79,7 +79,7 @@ async function saveSettings(e) {
     });
     if (!res.ok) throw new Error((await res.json()).error || 'Errore nel salvataggio');
 
-    SECRET_FIELD_IDS.forEach((id) => el(id).value = '');
+    SECRET_FIELD_IDS.forEach((id) => (el(id).value = ''));
     await loadSettings();
     setStatus('Impostazioni salvate.', false);
   } catch (err) {

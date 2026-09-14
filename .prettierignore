@@ -1,0 +1,5 @@
+node_modules
+app/data
+mock-server/data/*.json
+app/public/logo.svg
+package-lock.json

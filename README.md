@@ -35,33 +35,47 @@ vere in un secondo momento cambiando solo le variabili d'ambiente (nessuna modif
 
 ## Struttura
 
+Monorepo con **npm workspaces** (un solo `npm install` e un solo lockfile in radice):
+
 ```
 Ferentum-Cockpit/
-├─ app/               # backend Express + frontend statico (la dashboard)
+├─ package.json       # root: workspaces, script lint/format/test, devDependencies condivise
+├─ eslint.config.js / .prettierrc.json
+├─ .github/workflows/ci.yml   # lint + test ad ogni push/PR
+├─ app/               # workspace @ferentum-cockpit/app — backend Express + frontend statico
 │  ├─ server.js
 │  ├─ data/           # flags.json, settings.json — stato persistito, mai versionato
 │  ├─ src/lib/        # client Jira/GitHub/CI/PagerDuty/Slack (switch mock ↔ reale) + store dei flag/impostazioni
 │  ├─ src/routes/     # /api/feed, /api/workload, /api/settings, /api/jira/*, /api/github/*
 │  └─ public/         # HTML/CSS/JS della dashboard + settings.html + team.html
-├─ mock-server/       # server "wiremock-like" con endpoint identici a Jira/GitHub/GitHub Actions/PagerDuty/Slack
+├─ mock-server/       # workspace @ferentum-cockpit/mock-server — endpoint identici a Jira/GitHub/Actions/PagerDuty/Slack
 │  └─ data/           # fixture JSON (ticket multi-progetto con changelog, PR, build, incident, menzioni)
 ├─ .env.example       # template variabili d'ambiente (mai committare .env)
 └─ docker-compose.yml
 ```
 
-## Avvio rapido (senza Docker)
+## Sviluppo
 
 ```bash
+npm install          # un'unica volta, dalla radice (installa entrambi i workspace)
 cp .env.example .env
 
-cd mock-server && npm install && npm start
+npm run dev:mock     # avvia il mock server (porta 4000)
 # in un altro terminale
-cd app && npm install && npm start
+npm run dev:app      # avvia l'app (porta 3000)
 ```
 
-Apri http://localhost:3000
+Apri http://localhost:3000 — di default `USE_MOCKS=true`, la dashboard mostra i dati finti
+generati dal mock server.
 
-Di default `USE_MOCKS=true`: la dashboard mostra i dati finti generati dal mock server.
+Altri script utili (dalla radice):
+
+```bash
+npm run lint         # ESLint su tutto il monorepo
+npm run format       # verifica la formattazione Prettier
+npm run format:fix   # applica la formattazione Prettier
+npm test             # Vitest (unit test su store/config + integration test su entrambi i server)
+```
 
 ## Avvio con Docker
 

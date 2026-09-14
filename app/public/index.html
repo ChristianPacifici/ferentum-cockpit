@@ -1,65 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ferentum Cockpit</title>
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <img class="brand-mark" src="logo.svg" alt="Ferentum Cockpit" />
-      <div>
-        <h1>Ferentum Cockpit</h1>
-        <p class="subtitle">Feed personale &middot; Jira &amp; GitHub</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferentum Cockpit</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img class="brand-mark" src="logo.svg" alt="Ferentum Cockpit" />
+        <div>
+          <h1>Ferentum Cockpit</h1>
+          <p class="subtitle">Feed personale &middot; Jira &amp; GitHub</p>
+        </div>
       </div>
-    </div>
-    <div class="topbar-right">
-      <span id="mock-badge" class="badge">MOCK MODE</span>
-      <button id="refresh-btn" class="btn">Aggiorna</button>
-      <a href="/team.html" class="btn" title="Carico di lavoro del team">&#128101; Team</a>
-      <a href="/settings.html" class="btn" title="Impostazioni">&#9881; Impostazioni</a>
-    </div>
-  </header>
+      <div class="topbar-right">
+        <span id="mock-badge" class="badge">MOCK MODE</span>
+        <button id="refresh-btn" class="btn">Aggiorna</button>
+        <a href="/team.html" class="btn" title="Carico di lavoro del team">&#128101; Team</a>
+        <a href="/settings.html" class="btn" title="Impostazioni">&#9881; Impostazioni</a>
+      </div>
+    </header>
 
-  <main class="feed">
-    <section class="feed-section" id="signals-section">
-      <div class="section-header">
-        <h2>Segnali di progetto</h2>
-        <span id="signals-count" class="count">0</span>
-      </div>
-      <div id="signals-body" class="section-body">
-        <p class="loading">Caricamento...</p>
-      </div>
-    </section>
+    <main class="feed">
+      <section class="feed-section" id="signals-section">
+        <div class="section-header">
+          <h2>Segnali di progetto</h2>
+          <span id="signals-count" class="count">0</span>
+        </div>
+        <div id="signals-body" class="section-body">
+          <p class="loading">Caricamento...</p>
+        </div>
+      </section>
 
-    <section class="feed-section" id="mine-section">
-      <div class="section-header">
-        <h2>Le mie attività</h2>
-        <span id="mine-count" class="count">0</span>
-      </div>
-      <div id="mine-body" class="section-body">
-        <p class="loading">Caricamento...</p>
-      </div>
-    </section>
+      <section class="feed-section" id="mine-section">
+        <div class="section-header">
+          <h2>Le mie attività</h2>
+          <span id="mine-count" class="count">0</span>
+        </div>
+        <div id="mine-body" class="section-body">
+          <p class="loading">Caricamento...</p>
+        </div>
+      </section>
 
-    <section class="feed-section" id="team-section">
-      <div class="section-header">
-        <h2>Attività del team</h2>
-        <span id="team-count" class="count">0</span>
-      </div>
-      <div id="team-body" class="section-body">
-        <p class="loading">Caricamento...</p>
-      </div>
-    </section>
-  </main>
+      <section class="feed-section" id="team-section">
+        <div class="section-header">
+          <h2>Attività del team</h2>
+          <span id="team-count" class="count">0</span>
+        </div>
+        <div id="team-body" class="section-body">
+          <p class="loading">Caricamento...</p>
+        </div>
+      </section>
+    </main>
 
-  <footer class="footer">
-    <p>Ferentum Cockpit &mdash; in modalit&agrave; mock finch&eacute; le API key reali non sono configurate in <code>.env</code>.</p>
-  </footer>
+    <footer class="footer">
+      <p>
+        Ferentum Cockpit &mdash; in modalit&agrave; mock finch&eacute; le API key reali non sono configurate
+        in <code>.env</code>.
+      </p>
+    </footer>
 
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>

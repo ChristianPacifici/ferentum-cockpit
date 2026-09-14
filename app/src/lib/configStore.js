@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_DIR = path.join(__dirname, '..', '..', 'data');
+// FERENTUM_DATA_DIR lets tests point this at a throwaway temp directory instead of app/data.
+const DATA_DIR = process.env.FERENTUM_DATA_DIR || path.join(__dirname, '..', '..', 'data');
 const SETTINGS_FILE = path.join(DATA_DIR, 'settings.json');
 
 // Bootstrap defaults come from .env — used only until the user saves something via the
@@ -12,13 +13,15 @@ const ENV_DEFAULTS = {
   jiraBaseUrl: process.env.JIRA_BASE_URL || '',
   jiraEmail: process.env.JIRA_EMAIL || '',
   jiraApiToken: process.env.JIRA_API_TOKEN || '',
-  jiraJql: process.env.JIRA_JQL || 'assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC',
+  jiraJql:
+    process.env.JIRA_JQL || 'assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC',
   jiraTeamJql: process.env.JIRA_TEAM_JQL || 'project = FER ORDER BY updated DESC',
   jiraActivityLimit: Number(process.env.JIRA_ACTIVITY_LIMIT || 10),
   // JQL per la vista "carico di lavoro": usa "project in (...)" per aggregare più board/progetti
   // contemporaneamente — un Lead segue raramente un solo progetto Jira.
   jiraWorkloadJql:
-    process.env.JIRA_WORKLOAD_JQL || 'project in (FER, PLAT) AND statusCategory != Done ORDER BY updated DESC',
+    process.env.JIRA_WORKLOAD_JQL ||
+    'project in (FER, PLAT) AND statusCategory != Done ORDER BY updated DESC',
   // Mappa "login GitHub=Nome Jira" separata da virgola, per unire i conteggi delle due fonti per persona.
   teamDirectory:
     process.env.TEAM_DIRECTORY ||
@@ -91,10 +94,12 @@ function updateSettings(partial) {
     if (!(key in ENV_DEFAULTS)) continue; // ignore unknown fields
 
     // A blank secret field means "leave the existing token untouched", not "clear it".
-    if (SECRET_FIELDS.includes(key) && (rawValue === '' || rawValue === undefined || rawValue === null)) continue;
+    if (SECRET_FIELDS.includes(key) && (rawValue === '' || rawValue === undefined || rawValue === null))
+      continue;
 
     if (BOOLEAN_FIELDS.includes(key)) {
-      next[key] = Boolean(rawValue);
+      // Coerce string 'false' to false too, since env vars and form values arrive as strings.
+      next[key] = rawValue === true || rawValue === 'true';
     } else if (NUMBER_FIELDS.includes(key)) {
       const n = Number(rawValue);
       if (!Number.isNaN(n)) next[key] = n;

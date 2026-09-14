@@ -1,0 +1,11 @@
+node_modules
+**/node_modules
+npm-debug.log
+.env
+.env.*
+.git
+.github
+app/data/flags.json
+app/data/settings.json
+**/*.test.js
+coverage

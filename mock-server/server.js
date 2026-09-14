@@ -32,7 +32,7 @@ app.get('/jira/rest/api/2/search', (req, res) => {
   if (onlyMine) issues = issues.filter((issue) => issue.fields.assignee?.displayName === MOCK_CURRENT_USER);
 
   if (!expand.includes('changelog')) {
-    issues = issues.map(({ changelog, ...rest }) => rest);
+    issues = issues.map(({ changelog: _changelog, ...rest }) => rest);
   }
 
   res.json({ ...jiraIssues, issues, total: issues.length });
@@ -74,8 +74,12 @@ app.get('/slack/search.messages', (req, res) => {
 
 app.get('/health', (req, res) => res.json({ status: 'ok', service: 'ferentum-cockpit-mock-server' }));
 
-app.listen(PORT, () => {
-  console.log(`Ferentum Cockpit mock server (Jira + GitHub) listening on port ${PORT}`);
-  console.log(`  Jira:   http://localhost:${PORT}/jira/rest/api/2/search`);
-  console.log(`  GitHub: http://localhost:${PORT}/github/repos/:owner/:repo/pulls`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Ferentum Cockpit mock server (Jira + GitHub) listening on port ${PORT}`);
+    console.log(`  Jira:   http://localhost:${PORT}/jira/rest/api/2/search`);
+    console.log(`  GitHub: http://localhost:${PORT}/github/repos/:owner/:repo/pulls`);
+  });
+}
+
+module.exports = app;

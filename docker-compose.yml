@@ -1,16 +1,20 @@
 services:
   mock-server:
-    build: ./mock-server
+    build:
+      context: .
+      dockerfile: mock-server/Dockerfile
     container_name: ferentum-cockpit-mock-server
     ports:
-      - "4000:4000"
+      - '4000:4000'
     restart: unless-stopped
 
   app:
-    build: ./app
+    build:
+      context: .
+      dockerfile: app/Dockerfile
     container_name: ferentum-cockpit-app
     ports:
-      - "3000:3000"
+      - '3000:3000'
     env_file:
       - .env
     environment:

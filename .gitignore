@@ -4,6 +4,7 @@
 
 node_modules/
 npm-debug.log*
+coverage/
 
 # Stato runtime locale (flag TODO/star, impostazioni con API key) - mai committato
 app/data/flags.json

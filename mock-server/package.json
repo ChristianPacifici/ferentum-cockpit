@@ -1,9 +1,12 @@
 {
-  "name": "ferentum-cockpit-mock-server",
+  "name": "@ferentum-cockpit/mock-server",
   "version": "1.0.0",
   "description": "Wiremock-style mock server that mimics the Jira and GitHub REST APIs for local development of Ferentum Cockpit.",
   "main": "server.js",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "node server.js"
   },
