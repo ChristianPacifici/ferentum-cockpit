@@ -131,6 +131,10 @@ body {
   font-size: 1rem;
 }
 
+.section-warning {
+  font-size: 0.95rem;
+}
+
 .count {
   background: var(--accent-soft);
   color: var(--accent);
