@@ -148,6 +148,23 @@ function renderSection(bodyEl, countEl, items, emptyMessage) {
 
 const SIGNAL_SOURCES = ['ci-failure', 'pagerduty-incident', 'slack-mention'];
 
+// Mostra in alto quali canali non hanno risposto, senza impedire il caricamento degli altri.
+function renderChannelErrors(errors) {
+  const container = document.getElementById('channel-errors');
+  if (!errors || errors.length === 0) {
+    container.hidden = true;
+    container.innerHTML = '';
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = errors
+    .map(
+      (e) =>
+        `<div class="channel-error">⚠️ <span><strong>${escapeHtml(e.label)}</strong> non raggiungibile: ${escapeHtml(e.message)}</span></div>`
+    )
+    .join('');
+}
+
 async function loadFeed() {
   const signalsBody = document.getElementById('signals-body');
   const signalsCount = document.getElementById('signals-count');
@@ -159,7 +176,9 @@ async function loadFeed() {
   try {
     const res = await fetch('/api/feed');
     if (!res.ok) throw new Error((await res.json()).error || 'Errore nel caricamento del feed');
-    const { items } = await res.json();
+    const { items, errors } = await res.json();
+
+    renderChannelErrors(errors);
 
     const signals = items.filter((i) => SIGNAL_SOURCES.includes(i.source));
     const mine = items.filter((i) => i.source === 'jira-todo' || i.source === 'github-pr');
@@ -169,6 +188,7 @@ async function loadFeed() {
     renderSection(mineBody, mineCount, mine, 'Nessuna attività personale al momento. 🎉');
     renderSection(teamBody, teamCount, team, 'Nessuna attività recente del team.');
   } catch (err) {
+    renderChannelErrors([{ label: 'Feed', message: err.message }]);
     signalsBody.innerHTML = `<p class="error">Errore: ${err.message}</p>`;
     mineBody.innerHTML = `<p class="error">Errore: ${err.message}</p>`;
     teamBody.innerHTML = `<p class="error">Errore: ${err.message}</p>`;

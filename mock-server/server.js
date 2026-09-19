@@ -15,11 +15,13 @@ app.use((req, res, next) => {
 
 const MOCK_CURRENT_USER = 'Christian Pacifici';
 
-// --- Jira mock: mirrors GET /rest/api/2/search?jql=...&expand=changelog ---
-// Applies a minimal, best-effort interpretation of a few common JQL clauses so the mock behaves
-// like a real filtered search instead of always returning every fixture issue.
-// Only includes the "changelog" field when expand=changelog is requested, like real Jira does.
-app.get('/jira/rest/api/2/search', (req, res) => {
+// --- Jira mock: mirrors GET /rest/api/2/search/jql?jql=...&expand=changelog ---
+// La vecchia GET /rest/api/2/search è stata deprecata da Atlassian a favore di questo endpoint
+// (paginazione a cursore: nextPageToken/isLast invece di startAt/total).
+// Applica un'interpretazione minima di alcune clausole JQL comuni così il mock si comporta come
+// una ricerca filtrata reale invece di restituire sempre tutte le fixture.
+// Include il campo "changelog" solo quando viene richiesto expand=changelog, come la vera Jira.
+app.get('/jira/rest/api/2/search/jql', (req, res) => {
   const jql = req.query.jql || '';
   const expand = String(req.query.expand || '')
     .split(',')
@@ -35,7 +37,7 @@ app.get('/jira/rest/api/2/search', (req, res) => {
     issues = issues.map(({ changelog: _changelog, ...rest }) => rest);
   }
 
-  res.json({ ...jiraIssues, issues, total: issues.length });
+  res.json({ issues, nextPageToken: null, isLast: true });
 });
 
 // Jira "myself" endpoint, useful to mock currentUser() during local dev
@@ -77,7 +79,7 @@ app.get('/health', (req, res) => res.json({ status: 'ok', service: 'ferentum-coc
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Ferentum Cockpit mock server (Jira + GitHub) listening on port ${PORT}`);
-    console.log(`  Jira:   http://localhost:${PORT}/jira/rest/api/2/search`);
+    console.log(`  Jira:   http://localhost:${PORT}/jira/rest/api/2/search/jql`);
     console.log(`  GitHub: http://localhost:${PORT}/github/repos/:owner/:repo/pulls`);
   });
 }

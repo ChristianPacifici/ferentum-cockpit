@@ -11,16 +11,19 @@ function issueUrl(settings, key) {
     : `${settings.jiraBaseUrl}/browse/${key}`;
 }
 
+// Usa /rest/api/{version}/search/jql: la vecchia GET /rest/api/{version}/search è stata
+// deprecata da Atlassian a favore di questo endpoint a paginazione cursor-based
+// (nextPageToken/isLast al posto di startAt/total — qui non paginiamo, quindi non ci serve).
 async function searchIssues(settings, jql, { expand } = {}) {
   const base = settings.useMocks ? `${settings.mockServerUrl}/jira` : settings.jiraBaseUrl;
   const apiVersion = settings.useMocks ? '2' : '3';
-  const params = new URLSearchParams({ jql });
+  const params = new URLSearchParams({ jql, maxResults: '50' });
   if (expand) params.set('expand', expand);
 
   const headers = { Accept: 'application/json' };
   if (!settings.useMocks) headers.Authorization = authHeader(settings);
 
-  const response = await fetch(`${base}/rest/api/${apiVersion}/search?${params}`, { headers });
+  const response = await fetch(`${base}/rest/api/${apiVersion}/search/jql?${params}`, { headers });
   if (!response.ok) {
     throw new Error(`Jira API error ${response.status}: ${await response.text()}`);
   }

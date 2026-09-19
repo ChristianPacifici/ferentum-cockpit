@@ -29,12 +29,31 @@ function renderPerson(person, maxTotal) {
   return row;
 }
 
+// Mostra in alto quali canali non hanno risposto, senza impedire il caricamento del resto.
+function renderChannelErrors(errors) {
+  const container = document.getElementById('channel-errors');
+  if (!errors || errors.length === 0) {
+    container.hidden = true;
+    container.innerHTML = '';
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = errors
+    .map(
+      (e) =>
+        `<div class="channel-error">⚠️ <span><strong>${escapeHtml(e.label)}</strong> non raggiungibile: ${escapeHtml(e.message)}</span></div>`
+    )
+    .join('');
+}
+
 async function loadWorkload() {
   const body = document.getElementById('workload-body');
   try {
     const res = await fetch('/api/workload');
     if (!res.ok) throw new Error((await res.json()).error || 'Errore nel caricamento del carico di lavoro');
-    const { people } = await res.json();
+    const { people, errors } = await res.json();
+
+    renderChannelErrors(errors);
 
     if (people.length === 0) {
       body.innerHTML = '<p class="empty">Nessun dato disponibile.</p>';
@@ -45,6 +64,7 @@ async function loadWorkload() {
     body.innerHTML = '';
     people.forEach((person) => body.appendChild(renderPerson(person, maxTotal)));
   } catch (err) {
+    renderChannelErrors([{ label: 'Carico di lavoro', message: err.message }]);
     body.innerHTML = `<p class="error">Errore: ${err.message}</p>`;
   }
 }

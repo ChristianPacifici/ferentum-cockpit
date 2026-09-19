@@ -11,7 +11,7 @@ describe('mock-server', () => {
 
   it('excludes Done issues when the JQL says statusCategory != Done', async () => {
     const res = await request(app)
-      .get('/jira/rest/api/2/search')
+      .get('/jira/rest/api/2/search/jql')
       .query({ jql: 'statusCategory != Done ORDER BY updated DESC' });
 
     expect(res.status).toBe(200);
@@ -21,7 +21,7 @@ describe('mock-server', () => {
 
   it('filters to the mock current user when the JQL says assignee = currentUser()', async () => {
     const res = await request(app)
-      .get('/jira/rest/api/2/search')
+      .get('/jira/rest/api/2/search/jql')
       .query({ jql: 'assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC' });
 
     expect(res.body.issues.length).toBeGreaterThan(0);
@@ -31,9 +31,9 @@ describe('mock-server', () => {
   });
 
   it('only includes changelog when expand=changelog is requested', async () => {
-    const withoutExpand = await request(app).get('/jira/rest/api/2/search').query({ jql: '' });
+    const withoutExpand = await request(app).get('/jira/rest/api/2/search/jql').query({ jql: '' });
     const withExpand = await request(app)
-      .get('/jira/rest/api/2/search')
+      .get('/jira/rest/api/2/search/jql')
       .query({ jql: '', expand: 'changelog' });
 
     expect(withoutExpand.body.issues.every((issue) => issue.changelog === undefined)).toBe(true);

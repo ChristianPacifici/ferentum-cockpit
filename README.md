@@ -111,9 +111,15 @@ Puoi farlo in due modi equivalenti:
 4. Riavvia l'app: `docker compose up --build` (o `npm start` in locale).
 
 In entrambi i casi il codice non cambia: il client Jira/GitHub chiama gli stessi path
-(`/rest/api/2/search`, `/repos/:owner/:repo/pulls`) ma verso l'host reale invece che verso il
-mock server. **Nota**: qualunque valore salvato dalla pagina Impostazioni ha la precedenza su
+(`/rest/api/{2,3}/search/jql`, `/repos/:owner/:repo/pulls`) ma verso l'host reale invece che verso
+il mock server. **Nota**: qualunque valore salvato dalla pagina Impostazioni ha la precedenza su
 `.env` per quel campo (i valori di `.env` restano il default iniziale finché non li sovrascrivi).
+
+**Nota sulla ricerca Jira**: l'app usa `GET /rest/api/{2,3}/search/jql`, non la vecchia
+`GET /rest/api/{2,3}/search` — Atlassian ha deprecato quest'ultima a favore di un endpoint a
+paginazione cursor-based (`nextPageToken`/`isLast` invece di `startAt`/`total`). Se in futuro
+Atlassian introducesse ulteriori cambi, il punto unico da aggiornare è `searchIssues()` in
+[`app/src/lib/jiraClient.js`](app/src/lib/jiraClient.js).
 
 **Le chiavi API vanno SEMPRE in `.env` o nella pagina Impostazioni, mai in `.env.example` né
 committate.** `.gitignore` esclude già `.env`, ogni `.env.*` (tranne `.env.example`) e
